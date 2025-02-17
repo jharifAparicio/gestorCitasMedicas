@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+nav {
+    width: max-content;
+    ul {
+        list-style-type: none;
+        padding: 0;
+        color: white;
+        text-decoration: none;
+        li {
+            display: inline;
+            margin-right: 20px;
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #4a90e2;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.calendario-placeholder {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+#lista-citas ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#lista-citas li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #calendario,
+    #lista-citas {
+        width: 30%;
+    }
+}
