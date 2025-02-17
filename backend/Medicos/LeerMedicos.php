@@ -1,5 +1,7 @@
 <?php
-include '../conexion.php';
+include '../database/Database.php';
+
+$con = (new Database())->getConnection();
 
 $sql = "SELECT M.id AS id_medico, M.nombre AS nombre_medico, M.apellido AS apellido_medico, E.nombre AS especialidad FROM medicos AS M INNER JOIN especialidades AS E ON M.especialidad_id = E.id;";
 
