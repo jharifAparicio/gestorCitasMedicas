@@ -1,11 +1,20 @@
-const app = document.getElementById('app');
+const body = document.querySelector('body');
+const app = document.querySelector('.app');
 
-function cargarMedicos() {
-    let html = '';
-    return fetch('/Citas_medicas/backend/Medicos/LeerMedicos.php')
-        .then(response => response.json())
+function cargarlayout() {
+    fetch('/Citas_medicas/views/Usuario.html')
+        .then(response => response.text())
         .then(data => {
-            html += `
+            body.innerHTML = data;
+        });
+}
+cargarlayout();
+
+async function cargarMedicos() {
+    let html = '';
+    const response = await fetch('/Citas_medicas/backend/Medicos/LeerMedicos.php');
+    const data = await response.json();
+    html += `
                 <table>
                         <tr>
                             <th>ID</th>
@@ -14,8 +23,8 @@ function cargarMedicos() {
                             <th>Especialidad</th>
                             <th>Acciones</th>
                         </tr>`;
-            for (let i = 0; i < data.length; i++) {
-                html += `
+    for (let i = 0; i < data.length; i++) {
+        html += `
                                 <tr>
                                     <td>${data[i].id_medico}</td>
                                     <td>${data[i].nombre_medico}</td>
@@ -26,10 +35,9 @@ function cargarMedicos() {
                                     </td>
                                 </tr>
                             `;
-            }
-            html += "</table>";
-            return html;
-        })
+    }
+    html += "</table>";
+    return html;
 }
 
 function CargarCalendario() {
@@ -76,3 +84,4 @@ function MostrarHorario(id_medico) {
             app.innerHTML = html;
         })
 }
+
