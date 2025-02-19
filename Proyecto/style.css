@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(7, 115, 151);
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+    margin-top: 170px;
+    
+}
+
+.log{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 320px;
+    background-color: white;
+    border: solid black 1px;
+    border-radius: 20px;
+}
+
+#L {
+    color: rgb(71, 165, 202);
+}
+
+.bt{
+
+    justify-content: center;
+
+}
+
+#button{
+    width: 220px;
+    height: 30px;
+    background-color: blue;
+    border-radius: 20px;
+}
