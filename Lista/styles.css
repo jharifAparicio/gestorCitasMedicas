@@ -7,33 +7,66 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #f4f4f4;
+    background-color: #007bff;
+    width: auto;
+    height: 60px;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0;
+    border-radius: 4px;
+    
 }
 
 form {
     margin-bottom: 20px;
+    background-color: #f4f4f4;
+    width: auto;
+    height: 50px;
+    padding-top: 20px;
 }
 
 label {
     font-weight: bold;
+    color: #007bff;
+    border: 2px solid #007bff;
+    background-color: #f4f4f4;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
+
+
 input[type="number"] {
-    padding: 5px;
+    padding: 8px 12px;
     margin-right: 10px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+    box-sizing: border-box;
 }
 
 button {
-    padding: 5px 10px;
+    padding: 8px 12px;
+    height: 40px;
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
+
+
 
 table {
     width: 100%;

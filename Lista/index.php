@@ -3,23 +3,27 @@
 require 'conexion.php';
 
 // Obtener el ID del médico (puede ser desde un formulario o sesión)
-$medico_id = $_GET['medico_id'] ?? null;
+$medico_id = isset($_GET['medico_id']) ? (int)$_GET['medico_id'] : null;
 
 // Consulta para obtener las citas del médico
 $citas = [];
 if ($medico_id) {
-    $query = "SELECT c.id, c.fecha_cita, c.hora_cita, 
-                     p.nombre AS paciente_nombre, p.apellido AS paciente_apellido,
-                     m.nombre AS medico_nombre, m.apellido AS medico_apellido
-              FROM citas c
-              JOIN pacientes p ON c.paciente_id = p.id
-              JOIN medicos m ON c.medico_id = m.id
-              WHERE c.medico_id = :medico_id AND c.estado = 'Programada'
-              ORDER BY c.fecha_cita, c.hora_cita";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':medico_id', $medico_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $citas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT c.id, c.fecha_cita, c.hora_cita, 
+                         p.nombre AS paciente_nombre, p.apellido AS paciente_apellido,
+                         m.nombre AS medico_nombre, m.apellido AS medico_apellido
+                  FROM citas c
+                  JOIN pacientes p ON c.paciente_id = p.id
+                  JOIN medicos m ON c.medico_id = m.id
+                  WHERE c.medico_id = :medico_id AND c.estado = 'Programada'
+                  ORDER BY c.fecha_cita, c.hora_cita";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':medico_id', $medico_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $citas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 }
 ?>
 
@@ -64,7 +68,7 @@ if ($medico_id) {
             </tbody>
         </table>
     <?php elseif ($medico_id) : ?>
-        <p>No existe el médico.</p>
+        <p>No se encontraron citas programadas para este médico.</p>
     <?php endif; ?>
 </body>
 </html>
