@@ -4,7 +4,7 @@ $con = (new Database())->getConnection();
 
 $id = $_GET['id_medico'];
 
-$sql = "SELECT M.id AS id, M.nombre AS nombre_Medico, M.apellido AS apellido_medico, H.hora_inicio AS inicio, H.hora_fin AS fin, H.dia_semana AS dias, C.fecha_cita AS fecha_cita, C.hora_cita AS hora_cita FROM horarios AS H INNER JOIN medicos AS M ON M.id = H.medico_id INNER JOIN citas AS C ON M.id = C.medico_id WHERE C.estado = 'Programada' AND C.medico_id = $id;";
+$sql = "SELECT M.nombre AS nombre, M.apellido AS apellido ,dia_semana AS dias, hora_inicio AS inicio, hora_fin AS fin FROM horarios INNER JOIN medicos AS M ON M.id = medico_id WHERE medico_id = $id";
 
 $result = $con->query($sql);
 
